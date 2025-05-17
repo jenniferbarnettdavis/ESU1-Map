@@ -12,10 +12,71 @@
       fill: #08243F;
       cursor: pointer;
     }
+
+    .state {
+  
+  .icon {
+    .ball{
+      opacity:0;
+      transform-origin:center center;
+      transition: transform 0.3s,           opacity 0.1s;
+    }
+    .title {
+      opacity:0;
+      transition: opacity 0.1s;
+      border:1px solid red;
+    }
+  }
+  a:hover {
+    
+    .icon .ball{
+      opacity:1;
+      transform:scale(1.27);
+    }
+    .icon .title{
+      opacity:1;
+    }
+  }
+}
   </style>
 </head>
 <body>
     <?xml version="1.0" encoding="UTF-8"?>
+
+  	<svg version="1.1" id="stuff" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 400"  xml:space="preserve">
+		<g class="the-map">
+
+			<g class="state" >
+				<a href="#" class="map-btn">
+					<g>
+						<rect x="120" y="200" width="120" height="60" />
+					</g>
+					<g class="icon">
+						<circle class="ball" cx="180" cy="200" r="20" fill="orange" stroke="#f40"></circle>
+						<text class="title"  x="140" y="250" fill="#f40">
+							location A
+						</text>
+					</g>
+				</a>
+			</g>
+
+			<g class="state floreeda">
+				<a href="#" class="map-btn">
+					<g>
+						<rect x="250" y="200" width="120" height="60" />
+					</g>
+					<g class="icon">
+						<circle class="ball" cx="310" cy="200" r="20" fill="orange" stroke="#f40"></circle>
+						<text class="title"  x="260" y="250" fill="#f40">
+							location B
+						</text>
+					</g>
+				</a>
+			</g>
+
+			
+		</g>
+	</svg>
     <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" width="215.162" height="84.645" viewBox="0 0 215.162 84.645">
       <g id="Layer_1">
  <!--ESU19-->
