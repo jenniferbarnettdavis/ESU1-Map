@@ -32,6 +32,10 @@ path:hover {
   text-anchor: middle;
   font-family: 'Figtree', sans-serif;
   font-weight: 900;
+  
+}
+svg.mobile-visible .label {
+  opacity: 1 !important;
 }
 
 :root {--colorA:#679792; --colorB:#08243F; --colorC:#C05746; --colorD:#FEC146}
@@ -214,5 +218,12 @@ path:hover {
 </g>
 
     </svg>
+    <script>
+  // Simple mobile detection
+  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    document.querySelector('svg').classList.add('mobile-visible');
+  }
+</script>
+
 
 </body>
