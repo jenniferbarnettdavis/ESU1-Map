@@ -12,14 +12,15 @@
 }
 
 path {
-  fill-opacity: 0.6; /* Semi-transparent to start */
+  fill-opacity: 1; /* Semi-transparent to start */
   transition: fill-opacity 0.1s ease;
   stroke:white !important;
 }
 
 path:hover {
-  fill-opacity: 1; /* Darker on hover */
+  fill-opacity: 0; /* Darker on hover */
   cursor: pointer;
+  stroke
 }
 
 /* Label styling */
@@ -27,11 +28,12 @@ path:hover {
   opacity: 0;
   transition: opacity 0.1s ease;
   pointer-events: none;
-  font-size: 4px;
   fill: #ffffff;
   text-anchor: middle;
-  font-family: 'Figtree', sans-serif;
-  font-weight: 900;
+ font-family: 'Figtree', sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 4px !important;
+  fill: #08243F !important;
   
 }
 svg.mobile-visible .label {
@@ -90,13 +92,13 @@ svg.mobile-visible .label {
 		<g id="Nebraska">
 <!--ESU19-->
         <g class="esu19" tabindex="19">
-        <a href="https://www.esu19.org" target="_blank" aria-label="Educational Service Unit 19">
+        <a href="https://www.ops.org/esu19" target="_blank" aria-label="Educational Service Unit 19">
 			<path id="ESU19" d="M165.264,47.69c.174.191.321.882.003.883l-.005.12c.67.667.522.254.946-.096.093-.077.302-.093.416-.192.157-.136.195-.651.553-.586.281.488.226.924.328,1.452.557.035.309.246.434.568.027.069.122.062.152.13.084.187-.027.336.234.501.489.308.537-.299.441-.649.327-.161.674.218.807.238.101.015.267.251.35.229.22-.059.927.975,1.003,1.43h.353l-.054-.325-.219-.35-.036-.391.341-.346.499-.101-.183-.375-.284-.081-.301.015-.467.102-.48-.146-.106-.268.032-.319.296-.485-.015-.332-.159-.319-.074-.283.166-.263-.311-.239-.028-.301.192-.251.338.092-.054.35.097.289.381-.183.263-.338-.012-.25-.297-.443-.304-.087-.543.01-.441-.309-.206-.269.11-.35.378-.209.049-.342-.152-.288-.032-.245.16-.571-.019-.322h-.523c-.098.474-.362,1.104-.576,1.181l-.857.103v.417s-.246-.004-.246-.004l-.082-.293-.257.047-.292.251c-.075-.287-.344-.052-.421-.34-.364.096-.336.428-.794.374-.114.075-.107.608-.065.744.096.307.468-.143.405.221-.381.007-.877.123-.965.507-.495-.008-.832-.149-1.003.409-.22.717.821.532,1.135.876Z" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
 		</a>
 		</g>
 <!--ESU18-->		
 		<g class="esu18" tabindex="18">
-		<a href="https://www.esu18.org" target="_blank"  aria-label="Educational Service Unit 18">
+		<a href="https://home.lps.org/esu18/" target="_blank"  aria-label="Educational Service Unit 18">
 			<path id="ESU18" d="M156.666,62.504c.053.242-.038.565-.334.584-.067-.282-.152-.629-.159-.787-.005-.103.085-.225.076-.339-.024-.318-.064-.641-.085-.959l.33-.005.067-.375c-.033-.165-.319-.066-.405-.174-.272-.342-.366-1.357-.483-1.5-.111-.135-.472-.132-.621-.279-.124-.121-.026-.299-.435-.418-.216-.063-.144.537-.121.664-.174.049-.392-.105-.531-.087-.056.007-.042.153-.109.17-.403.101-1.133.003-1.469.102-.194.057-.226.262-.339.376-.036.037-.162.012-.196.043-.165.151-.169.871-.261,1.12-.052.141-.304.18-.182.531l-.583-.167c.093.295-.317.392-.337.473-.065.261-.002.483-.003.499-.008.082.105.226.054.285-.058.068-.208.043-.277.105-.015.013-.196.329-.188.347.085.19.69.087.707-.124.32.15.258.293.375.528.055.11.169.807.169.807.31.055.655-.128.714-.423l1.204.422.094-.407c.189-.012.573.265.575.406l.126.42c.566.022.346-.659.954-.51l.05-.247.443.017.138.323.21-.251.414.25c.07-.214.01-.58.335-.334.004-.006.113.019.142-.027.042-.068.011-.189.033-.211.054-.054.632.105.743-.263l-.834-.585Z" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
     	</a>
     	</g>
@@ -199,8 +201,8 @@ svg.mobile-visible .label {
 
 <g id="labels">
   <text class="label label-1" x="145" y="18">ESU 1</text>
-  <text class="label label-2" x="157" y="34">ESU 2</text>
-  <text class="label label-3" x="165" y="57">ESU 3</text>
+  <text class="label label-2" x="156" y="34">ESU 2</text>
+  <text class="label label-3" x="168" y="57">ESU 3</text>
   <text class="label label-4" x="168" y="74">ESU 4</text>
   <text class="label label-5" x="145" y="80">ESU 5</text>
   <text class="label label-6" x="142" y="66">ESU 6</text>
@@ -213,8 +215,8 @@ svg.mobile-visible .label {
   <text class="label label-15" x="58" y="77">ESU 15</text>
   <text class="label label-16" x="60" y="42">ESU 16</text>
   <text class="label label-17" x="80" y="15">ESU 17</text>
-  <text class="label label-18" x="157" y="62">ESU 18</text>
-  <text class="label label-19" x="163" y="49">ESU 19</text>
+  <text class="label label-18" x="153" y="62">ESU 18</text>
+  <text class="label label-19" x="173" y="49">ESU 19</text>
 </g>
 
     </svg>
