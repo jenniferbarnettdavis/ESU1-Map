@@ -1,95 +1,94 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Nebraska Educational Service Units — Interactive Map (Accessible)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Fix the Google Fonts param (wght, not wgth) -->
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@900&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wgth@900&display=swap" rel="stylesheet">
+  <title>Nebraska Educational Service Units</title>
+ 
   <style>
-    :root { --colorA:#679792; --colorB:#08243F; --colorC:#C05746; --colorD:#FEC146; }
+ svg {
+  width: 100%;
+  height: auto;
+}
 
-    /* Your existing map styles can remain as-is; these are additive fixes. */
+path {
+  fill-opacity: 1; /* Semi-transparent to start */
+  transition: fill-opacity 0.1s ease;
+  stroke:white !important;
+}
 
-    svg { width: 100%; height: auto; }
+path:hover {
+  fill-opacity: 0; /* Darker on hover */
+  cursor: pointer;
+  stroke
+}
 
-    /* Keep your original look; just fix the broken rule and add focus styles */
-    path {
-      fill-opacity: 1;
-      transition: fill-opacity .1s ease;
-      stroke: white !important;
-    }
-    path:hover { fill-opacity: 0; cursor: pointer; } /* removed dangling 'stroke' */
+/* Label styling */
+.label {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  pointer-events: none;
+  fill: #ffffff;
+  text-anchor: middle;
+ font-family: 'Figtree', sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 4px !important;
+  fill: #08243F !important;
+  
+}
+svg.mobile-visible .label {
+  opacity: 1 !important;
+}
 
-    /* Label styling — keep your size exactly as-is */
-    .label {
-      opacity: 0;
-      transition: opacity .1s ease;
-      pointer-events: none;
-      text-anchor: middle;
-      font-family: 'Figtree', system-ui, sans-serif !important;
-      font-weight: 900 !important;
-      font-size: 4px !important;     /* << DO NOT CHANGE (as requested) */
-      fill: #08243F !important;
-    }
+:root {--colorA:#679792; --colorB:#08243F; --colorC:#C05746; --colorD:#FEC146}
 
-    /* On very small screens you can force labels visible without UA sniffing (optional) */
-    @media (max-width: 768px) {
-      svg #labels .label { opacity: 1 !important; }
-    }
+.esu1,.esu10,.esu6,.esu13 {fill: var(--colorD)}
+.esu19,.esu15,.esu9,.esu18,.esu8 {fill: var(--colorA)}
+.esu17,.esu11,.esu4,.esu2 {fill: var(--colorB)}
+.esu16,.esu7,.esu3,.esu5 {fill: var(--colorC)}
+.esu1:hover ~ #labels .label-1,
+.esu1:focus ~ #labels .label-1 {opacity: 1;  }
+.esu2:hover ~ #labels .label-2,
+.esu2:focus ~ #labels .label-2 {opacity: 1;  }
+.esu3:hover ~ #labels .label-3,
+.esu3:focus ~ #labels .label-3 {opacity: 1;  }
+.esu4:hover ~ #labels .label-4,
+.esu4:focus ~ #labels .label-4 {opacity: 1;  }
+.esu5:hover ~ #labels .label-5,
+.esu5:focus ~ #labels .label-5 {opacity: 1;  }
+.esu6:hover ~ #labels .label-6,
+.esu6:focus ~ #labels .label-6 {opacity: 1;  }
+.esu7:hover ~ #labels .label-7,
+.esu7:focus ~ #labels .label-7 {opacity: 1;  }
+.esu8:hover ~ #labels .label-8,
+.esu8:focus ~ #labels .label-8 {opacity: 1;  }
+.esu9:hover ~ #labels .label-9,
+.esu9:focus ~ #labels .label-9 {opacity: 1;  }
+.esu10:hover ~ #labels .label-10,
+.esu10:focus ~ #labels .label-10 {opacity: 1;  }
+.esu11:hover ~ #labels .label-11,
+.esu11:focus ~ #labels .label-11 {opacity: 1;  }
+.esu13:hover ~ #labels .label-13,
+.esu13:focus ~ #labels .label-13 {opacity: 1;  }
+.esu15:hover ~ #labels .label-15,
+.esu15:focus ~ #labels .label-15 {opacity: 1;  }
+.esu16:hover ~ #labels .label-16,
+.esu16:focus ~ #labels .label-16 {opacity: 1;  }
+.esu17:hover ~ #labels .label-17,
+.esu17:focus ~ #labels .label-17 {opacity: 1;  }
+.esu18:hover ~ #labels .label-18,
+.esu18:focus ~ #labels .label-18 {opacity: 1;  }
+.esu19:hover ~ #labels .label-19,
+.esu19:focus ~ #labels .label-19 {opacity: 1;  }
+}
 
-    /* === Accessibility additions that DO NOT change geometry/visuals === */
 
-    /* 1) Show matching label when the region (group) contains a focused link */
-    .esu1:focus-within ~ #labels .label-1,
-    .esu2:focus-within ~ #labels .label-2,
-    .esu3:focus-within ~ #labels .label-3,
-    .esu4:focus-within ~ #labels .label-4,
-    .esu5:focus-within ~ #labels .label-5,
-    .esu6:focus-within ~ #labels .label-6,
-    .esu7:focus-within ~ #labels .label-7,
-    .esu8:focus-within ~ #labels .label-8,
-    .esu9:focus-within ~ #labels .label-9,
-    .esu10:focus-within ~ #labels .label-10,
-    .esu11:focus-within ~ #labels .label-11,
-    .esu13:focus-within ~ #labels .label-13,
-    .esu15:focus-within ~ #labels .label-15,
-    .esu16:focus-within ~ #labels .label-16,
-    .esu17:focus-within ~ #labels .label-17,
-    .esu18:focus-within ~ #labels .label-18,
-    .esu19:focus-within ~ #labels .label-19 {
-      opacity: 1 !important;
-    }
-
-    /* 2) Visible focus indicator on the active region (non-text contrast) */
-    /* Keeps your white stroke but adds a thick dark ring when focused */
-    g[class^="esu"] a:focus-visible path {
-      outline: none;
-      stroke: #000;                         /* high contrast */
-      stroke-width: 1.5px;                  /* readable ring */
-      vector-effect: non-scaling-stroke;    /* ring stays readable on zoom */
-    }
-
-    /* 3) Caption area (zoomable, outside SVG) */
-    #map-caption {
-      margin-top: .5rem;
-      font: 600 1rem/1.3 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    #map-caption .hint {
-      font-weight: 500;
-      opacity: .75;
-    }
+  
   </style>
 </head>
 <body>
-
-  <h1 class="sr-only" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-    Nebraska Educational Service Units – Interactive Map
-  </h1>
-
-<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" width="215.162" height="84.645" viewBox="0 0 215.162 84.645">
+	<?xml version="1.0" encoding="UTF-8"?>
+    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" width="215.162" height="84.645" viewBox="0 0 215.162 84.645">
 		<g id="Nebraska">
 <!--ESU19-->
         <g class="esu19" tabindex="19">
@@ -221,95 +220,12 @@
 </g>
 
     </svg>
+    <script>
+  // Simple mobile detection
+  if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    document.querySelector('svg').classList.add('mobile-visible');
+  }
+</script>
 
-  <!-- Caption for zoom/responsive readability; updates on hover/focus -->
-  <div id="map-caption" aria-live="polite">
-    <span class="hint">Tip:</span> Tab or hover a region to hear/see its ESU.
-  </div>
 
-  <script>
-    (function () {
-      // 1) Find the SVG (works whether you pasted inside #svg-holder or directly in body)
-      const svg = document.querySelector('svg');
-      if (!svg) return;
-
-      // 2) Give the SVG an accessible name/description if missing
-      const needsTitle = !svg.querySelector('title');
-      const needsDesc  = !svg.querySelector('desc');
-      svg.setAttribute('role', 'img');
-
-      // Create/ensure ids and aria-labelledby
-      let ids = [];
-      if (needsTitle) {
-        const t = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-        t.id = 'esu-map-title';
-        t.textContent = 'Nebraska Educational Service Units map';
-        svg.insertBefore(t, svg.firstChild);
-        ids.push(t.id);
-      } else {
-        ids.push(svg.querySelector('title').id || (svg.querySelector('title').id = 'esu-map-title'));
-      }
-      if (needsDesc) {
-        const d = document.createElementNS('http://www.w3.org/2000/svg', 'desc');
-        d.id = 'esu-map-desc';
-        d.textContent = 'Interactive map of ESU regions. Each region is a link that opens the ESU website in a new tab.';
-        svg.insertBefore(d, svg.firstChild.nextSibling);
-        ids.push(d.id);
-      } else {
-        ids.push(svg.querySelector('desc').id || (svg.querySelector('desc').id = 'esu-map-desc'));
-      }
-      svg.setAttribute('aria-labelledby', ids.join(' '));
-
-      // 3) Upgrade each ESU link for keyboard, SR name, and security
-      const caption = document.getElementById('map-caption');
-
-      // All region groups: class starts with "esu"
-      const regionGroups = svg.querySelectorAll('g[class^="esu"]');
-
-      regionGroups.forEach(g => {
-        // a) Groups themselves should not be in the tab order
-        if (g.hasAttribute('tabindex')) g.removeAttribute('tabindex');
-
-        // b) Find the clickable <a>
-        const link = g.querySelector('a');
-        if (!link) return;
-
-        // c) Ensure it is focusable (anchors with href already are)
-        //    Add security + inform users about new tab behavior
-        if (link.getAttribute('target') === '_blank') {
-          link.setAttribute('rel', 'noopener');
-          // Append "opens in a new tab" to accessible name if not already there
-          const label = link.getAttribute('aria-label') || link.textContent.trim() || 'ESU link';
-          if (!/\bopens in a new tab\b/i.test(label)) {
-            link.setAttribute('aria-label', label + ' (opens in a new tab)');
-          }
-        }
-
-        // d) Use data-label for a clean caption; derive from aria-label or id
-        const friendly =
-          (link.getAttribute('aria-label') || '')
-            .replace(/\s*\(opens in a new tab\)\s*$/i, '')  // remove note for caption
-            || (g.className.baseVal || g.className).toUpperCase();
-
-        link.dataset.caption = friendly;
-
-        // e) Live caption updates on hover/focus
-        const show = () => caption.textContent = friendly + (link.target === '_blank' ? ' — opens in a new tab' : '');
-        const clear = () => caption.textContent = 'Tip: Tab or hover a region to hear/see its ESU.';
-
-        link.addEventListener('focus', show);
-        link.addEventListener('mouseenter', show);
-        link.addEventListener('blur', clear);
-        link.addEventListener('mouseleave', clear);
-      });
-
-      // 4) Ensure label reveal also works for keyboard via :focus-within (CSS already added).
-      //    Nothing to do here in JS beyond making sure focus is on <a> (it is).
-
-      // 5) Remove UA sniffing labels toggle if present; CSS media query handles small screens.
-      //    (If your old script added 'mobile-visible', it can stay—it won’t hurt.)
-    })();
-  </script>
 </body>
-</html>
-
