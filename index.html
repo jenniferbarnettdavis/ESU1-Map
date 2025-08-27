@@ -21,6 +21,11 @@ path:hover {
   fill-opacity: 0; /* Darker on hover */
   cursor: pointer;
   stroke
+
+g[class^="esu"]:focus-within path,
+g[class^="esu"]:focus path {
+  fill-opacity: 0;   /* same as your :hover */
+
 }
 
 /* Label styling */
